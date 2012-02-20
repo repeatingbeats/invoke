@@ -1,0 +1,26 @@
+{ "name": "invoke"
+, "version": "0.1.0"
+, "author": "Steve Lloyd"
+, "description": "Simple flow control library for chaining async functions"
+, "main": "./lib/invoke"
+, "keywords": [ "flow", "control", "sequence", "series", "parallel" ]
+, "homepage": "https://github.com/repeatingbeats/invoke"
+, "repository":
+  { "type": "git"
+  , "url": "https://github.com/repeatingbeats/invoke"
+  }
+, "bugs":
+   { "url": "http://github.com/repeatingbeats/invoke/issues"
+   }
+, "licenses":
+  [ { "type": "MIT"
+    , "url": "https://github.com/repeatingbeast/invoke/raw/master/LICENSE"
+    }
+  ]
+, "devDependencies":
+  { "nodeunit": "0.6.x"
+  }
+, "scripts":
+  { "test": "./node_modules/nodeunit/bin/nodeunit test/invoke-test.js"
+  }
+}
