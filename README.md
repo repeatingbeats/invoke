@@ -76,14 +76,14 @@ Adds a final callback and initiates invocation of the function steps defined in 
 
 * data - The result of the previous (final) step. This is an arbitrary value if the previous step was sequential, or an array of arbitrary values if the previous step was parallel.
 
-### Testing
+## Testing
 
 Install dev dependencies
 
     $ npm install -d
     $ npm test
 
-### Building & Linting
+## Building & Linting
 
     $ npm run-script build
 
