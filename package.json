@@ -19,8 +19,10 @@
   ]
 , "devDependencies":
   { "nodeunit": "0.6.x"
+  , "smoosh": ">=0.3.2"
   }
 , "scripts":
   { "test": "./node_modules/nodeunit/bin/nodeunit test/invoke-test.js"
+  , "build": "./node_modules/smoosh/bin/smoosh -rca ./config/build.json"
   }
 }
