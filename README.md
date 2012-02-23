@@ -40,7 +40,9 @@ The API is exposed as a single function that generates a chainable Invocable obj
     }).then(function (data, callback) {
       // and so forth
 
-Chainable methods on an Invocable:
+Take a look at the [examples](https://github.com/repeatingbeats/invoke/tree/master/examples).
+
+## Chainable methods on an Invocable:
 
 ### then(func)
 
