@@ -1,6 +1,6 @@
 # invoke.js
 
-__invoke__ is a dead simple asynchronous flow control micro-library for node.js. Sequential (__.then__) and parallel (__.and__) async functions can be chained into simple steps:
+__invoke__ is a dead simple asynchronous flow control micro-library. Sequential (__.then__) and parallel (__.and__) async functions can be chained into simple steps:
 
     invoke(function (data, callback) {
       // I'm an async function!
@@ -48,7 +48,7 @@ Adds a function as a sequential step. This function will not be invoked until al
 
 #### func is invoked with:
 
-* data - The result of the previous step. This is an arbitrary value if the previous step was sequential, or an array of arbitrary values if the previous step was parallel.
+* data - The result of the previous step. If the previous step was sequential, this is the value passed by the previous step's callback. If the previous step was parallel, it is an array of the values passed by the callbacks of the parallel functions.
 * callback(err, results) - Function to be invoked once with either an error or the results of this step.
 
 ### and(func)
@@ -57,7 +57,7 @@ Adds a function as a parallel step. This function will not be invoked in paralle
 
 #### func is invoked with:
 
-* data - The result of the previous step. This is an arbitrary value if the previous step was sequential, or an array of arbitrary values if the previous step was parallel.
+* data - The result of the previous step. If the previous step was sequential, this is the value passed by the previous step's callback. If the previous step was parallel, it is an array of the values passed by the callbacks of the parallel functions.
 * callback(err, results) - Function to be invoked once with either an error or the results of this step.
 
 ### rescue(func)
@@ -70,11 +70,11 @@ Adds an error handler. This function will be invoked once if any function in the
 
 ### end(initialValue, callback)
 
-Adds a final callback and initiates invocation of the function steps defined in the chain. __initialValue__ is the initial value passed as the first argument into the first function step.
+Adds a final callback and initiates invocation of the function steps defined in the chain. `initialValue` is the initial value passed as the first argument into the first function step.
 
 #### callback is invoked with
 
-* data - The result of the previous (final) step. This is an arbitrary value if the previous step was sequential, or an array of arbitrary values if the previous step was parallel.
+* data - The result of the previous (final) step. If the previous step was sequential, this is the value passed by the previous step's callback. If the previous step was parallel, it is an array of the values passed by the callbacks of the parallel functions.
 
 ## Testing
 
@@ -89,4 +89,4 @@ Install dev dependencies
 
 ## License
 
-invoke.js is MIT licensed. See LICENSE.
+invoke.js is MIT licensed. See [LICENSE](https://github.com/repeatingbeats/invoke/blob/master/LICENSE).
