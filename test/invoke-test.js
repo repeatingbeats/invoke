@@ -189,3 +189,30 @@ exports['mixed sequence and parallel function execution'] = {
       })
     }
 }
+
+exports['parallel error rescuing'] = {
+
+  'multiple errors': function (t) {
+
+    var errorCount = 0
+      , delay = 100;
+
+    invoke(function (data, cb) {
+      setTimeout(function () { cb(new Error()) }, delay)
+    }).and(function (data, cb) {
+      setTimeout(function () { cb(new Error()) }, delay)
+    }).and(function (data, cb) {
+      setTimeout(function () { cb(new Error()) }, delay)
+    }).rescue(function(err) {
+      errorCount++;
+      setTimeout(function () {
+        t.strictEqual(errorCount, 1)
+        t.done()
+      }, delay * 5)
+    }).end('foo', function (data) {
+      throw new Error('This should not be executed due to error rescue')
+    })
+    
+  }
+
+}
