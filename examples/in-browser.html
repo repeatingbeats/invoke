@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/invoke.js"></script>
+  </head>
+  <body>
+    <h1>simple browser example</h1>
+    <p id="invoke-target">start</p>
+    <script>
+      var target = document.getElementById('invoke-target')
+        , delay = 500 
+
+      invoke(function (d, cb) {
+        setTimeout(function () {
+          target.textContent = 'first serial function'
+          cb()
+        }, delay)
+      }).then(function (d, cb) {
+        setTimeout(function () {
+          target.textContent = 'second serial function'
+          cb()
+        }, delay)
+      }).then(function (d, cb) {
+        setTimeout(function () {
+          target.textContent = 'third serial function'
+          cb()
+        }, delay)
+      }).end(null, function (result) {
+        setTimeout(function () {
+          target.textContent = 'done'
+        }, delay)
+      })
+    </script>
+  <body>
+</html>
